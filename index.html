@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kółko i Krzyżyk</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Verdama', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 5px;
+            width: 310px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .cell {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 60px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        
+        .cell:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .line {
+            width: 314px;
+            height: 5px;
+            position: absolute;
+            background-color: #ff4757;
+            transform-origin: 0 0;
+            z-index: 1;
+        }
+        
+        #message {
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        #resetBtn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            background-color: #10cf1a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        #resetBtn:hover {
+            background-color: #3498db;
+        }
+        
+        footer {
+            margin-top: 2rem;
+            color: #666;
+        }
+        /* Styl dla menu po zakończeniu gry */
+        
+        .game-over-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .game-over-menu {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-over-menu h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .player-choice-btn {
+            padding: 1rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background-color: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .player-choice-btn.active {
+            background-color: #2980b9;
+            color: white;
+            border-color: #2980b9;
+        }
+        
+        .new-game-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            width: 100%;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .new-game-btn:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Kółko i Krzyżyk</h1>
+        <p> gra dla dwóch graczy</p>
+
+        <div id="board" class="board"></div>
+        <p id="message">Tura: X</p>
+        <button id="resetBtn">Resetuj grę</button>
+
+        <footer>
+            
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
